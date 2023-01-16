@@ -1,0 +1,35 @@
+<p>Fichier de composent principale</p>
+<ul>
+    <li *ngFor="let a of Assignments" > <p><b>{{a.nom}}</b> pour la date: <b>{{a.dateDeRendu}}</b> etat de devoir :<b>{{a.rendu}}</b></p></li>
+</ul>
+
+<div>
+    <h2>Les devoires non rendu</h2>
+    <div *ngFor="let a of Assignments" >
+        <p *ngIf="!a.rendu"><b>{{a.nom}}</b> pour la date: <b>{{a.dateDeRendu}}</b> etat de devoir :<b>{{a.rendu}}</b></p> 
+    </div>
+</div>
+
+<h2>Afficher si le existe = true else n'affiche rien</h2>
+<div *ngFor="let a of Assignments">
+    
+    <div *ngIf="existe"   >
+        <p *ngIf="a.rendu; else nonsoumis ">Rendu : <b>{{a.nom}}</b> pour la date: <b>{{a.dateDeRendu}}</b> etat de devoir :<b>{{a.rendu}}</b></p> 
+    </div>
+ 
+    <ng-template #nonsoumis>
+Non Rendu : {{a.nom}} , il doit etre rendu le {{a.dateDeRendu}}
+    </ng-template>
+</div>
+
+
+<!--
+<table>
+    <tr  *ngFor="let a of Assignments"> 
+    <td>{{a.nom}}</td> 
+    <td>{{a.dateDeRendu}} </td> 
+    <td>{{a.rendu}}</td>
+</tr>
+</table>
+-->
+
